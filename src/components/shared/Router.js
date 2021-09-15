@@ -1,8 +1,8 @@
+import AuthRoute from "components/shared/AuthRoute";
+import Home from "pages/Home.jsx";
+import Login from "pages/Login.jsx";
 import { Switch, Route } from "react-router-dom";
-import AuthRoute from "src/components/shared/AuthRoute";
-import Home from "src/pages/Home.jsx";
-import Login from "src/pages/Login.jsx";
-import urls from "src/utils/urls";
+import urls from "utils/urls";
 
 function Router() {
   return (

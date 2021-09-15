@@ -1,6 +1,6 @@
+import { useAuth } from "contexts/AuthProvider";
 import { Redirect, Route } from "react-router-dom";
-import { useAuth } from "src/contexts/AuthProvider";
-import urls from "src/utils/urls";
+import urls from "utils/urls";
 
 function AuthRoute(props) {
   const { isLoading, id } = useAuth();
