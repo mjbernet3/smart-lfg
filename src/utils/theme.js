@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+import { StepsStyleConfig as Steps } from "chakra-ui-steps";
 
 const theme = extendTheme({
   styles: {
@@ -11,6 +12,13 @@ const theme = extendTheme({
         boxSizing: "border-box",
       },
     },
+  },
+  colors: {
+    primary: "#2B6CB0",
+    surface: "#171923",
+  },
+  components: {
+    Steps,
   },
   config: {
     initialColorMode: "dark",

@@ -44,14 +44,8 @@ function Login() {
   };
 
   return (
-    <Flex
-      height="100%"
-      width="100%"
-      justify="center"
-      align="center"
-      padding="20px"
-    >
-      <VStack align="stretch" spacing="15px" flexBasis="450px">
+    <Flex height="100%" width="100%" padding="20px">
+      <VStack align="stretch" spacing="15px" flexBasis="450px" margin="auto">
         <Heading>Smart LFG</Heading>
         <Text>The best way to find other players like you.</Text>
         <VStack align="stretch">
