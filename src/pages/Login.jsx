@@ -11,15 +11,16 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-// import { useAuth } from "contexts/AuthProvider";
+import { useAuth } from "contexts/AuthProvider";
 import { useState } from "react";
 import { Link as RouterLink, useHistory } from "react-router-dom";
+import { login } from "services/auth";
 import { showError } from "utils/notifications";
 import urls from "utils/urls";
 import { validateEmail, validatePassword } from "utils/validators";
 
 function Login() {
-  // const { saveCurrentUser } = useAuth();
+  const { saveCurrentUser } = useAuth();
   const history = useHistory();
 
   const [isLoading, setLoading] = useState(false);
@@ -33,8 +34,8 @@ function Login() {
       validateEmail(email);
       validatePassword(password);
 
-      // const token = await login(email, password);
-      // saveCurrentUser(token);
+      const token = await login(email, password);
+      saveCurrentUser(token);
       history.push(urls.home);
     } catch (error) {
       showError(error.message);
