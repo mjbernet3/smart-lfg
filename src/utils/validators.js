@@ -13,3 +13,15 @@ export const validatePassword = (password) => {
     throw new Error("Passwords must be at least 8 characters.");
   }
 };
+
+export const validateAccountName = (accountName) => {
+  if (!accountName) {
+    throw new Error("Please enter an account name.");
+  }
+};
+
+export const validateGames = (games) => {
+  if (Object.keys(games).length === 0) {
+    throw new Error("Please choose at least one game.");
+  }
+};

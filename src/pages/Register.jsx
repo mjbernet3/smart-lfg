@@ -1,26 +1,38 @@
-import {
-  Button,
-  Divider,
-  Flex,
-  Heading,
-  HStack,
-  VStack,
-} from "@chakra-ui/react";
+import { Divider, Flex, Heading, VStack } from "@chakra-ui/react";
 import { Step, Steps, useSteps } from "chakra-ui-steps";
 import AccountStep from "components/register/AccountStep";
 import GameStep from "components/register/GameStep";
 import PreferenceStep from "components/register/PreferenceStep";
+import { useState } from "react";
 
 function Register() {
-  const steps = [
-    { label: "Games", content: <GameStep /> },
-    { label: "Preferences", content: <PreferenceStep /> },
-    { label: "Account", content: <AccountStep /> },
-  ];
+  const [stepInfo, setStepInfo] = useState({});
 
   const { activeStep, prevStep, nextStep } = useSteps({
     initialStep: 0,
   });
+
+  const updateStep = (key, values) => {
+    const currStepInfo = { ...stepInfo };
+    currStepInfo[key] = values;
+    setStepInfo(currStepInfo);
+    nextStep();
+  };
+
+  const steps = [
+    {
+      label: "Games",
+      content: (
+        <GameStep
+          initialGames={{ ...stepInfo["games"] }}
+          onPrev={() => prevStep()}
+          onNext={updateStep}
+        />
+      ),
+    },
+    { label: "Preferences", content: <PreferenceStep /> },
+    { label: "Account", content: <AccountStep /> },
+  ];
 
   return (
     <Flex height="100%" width="100%" padding="20px">
@@ -32,12 +44,12 @@ function Register() {
                 height="600px"
                 align="stretch"
                 marginTop="60px"
-                backgroundColor="surface"
+                backgroundColor="surface.first"
                 borderRadius="lg"
                 padding="20px"
               >
                 <Heading
-                  fontSize={{ base: "xl", md: "2xl" }}
+                  fontSize={{ base: "2xl", md: "3xl" }}
                   paddingBottom="20px"
                   textAlign="center"
                 >
@@ -47,17 +59,6 @@ function Register() {
                 <Flex flex="1" overflow="auto">
                   {content}
                 </Flex>
-                <HStack justify="flex-end" spacing="10px">
-                  <Button
-                    onClick={() => prevStep()}
-                    isDisabled={activeStep === 0}
-                  >
-                    Prev
-                  </Button>
-                  <Button onClick={() => nextStep()}>
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
-                </HStack>
               </VStack>
             </Step>
           ))}

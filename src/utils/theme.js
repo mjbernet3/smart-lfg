@@ -15,7 +15,10 @@ const theme = extendTheme({
   },
   colors: {
     primary: "#2B6CB0",
-    surface: "#171923",
+    surface: {
+      first: "#171923",
+      second: "#292B34",
+    },
   },
   components: {
     Steps,
