@@ -18,11 +18,20 @@ function Register() {
     initialStep: 0,
   });
 
+  const createAccount = () => {
+    console.log("Create account");
+  };
+
   const updateStep = (key, values) => {
     const currStepInfo = { ...stepInfo };
     currStepInfo[key] = values;
     setStepInfo(currStepInfo);
-    nextStep();
+
+    if (activeStep === steps.length - 1) {
+      createAccount();
+    } else {
+      nextStep();
+    }
   };
 
   const steps = [
@@ -46,7 +55,16 @@ function Register() {
         />
       ),
     },
-    { label: "Account", content: <AccountStep /> },
+    {
+      label: "Account",
+      content: (
+        <AccountStep
+          initialAccount={{ ...stepInfo["account"] }}
+          onPrev={() => prevStep()}
+          onNext={updateStep}
+        />
+      ),
+    },
   ];
 
   return (
