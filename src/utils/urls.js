@@ -3,6 +3,7 @@ const urls = {
   login: "/login",
   home: "/",
   api: {
+    register: "/register",
     login: "/login",
   },
 };
