@@ -5,6 +5,12 @@ import GameStep from "components/register/GameStep";
 import PreferenceStep from "components/register/PreferenceStep";
 import { useState } from "react";
 
+const stepTitles = [
+  "Choose your games",
+  "Set your preferences",
+  "Create your account",
+];
+
 function Register() {
   const [stepInfo, setStepInfo] = useState({});
 
@@ -62,7 +68,7 @@ function Register() {
                   paddingBottom="20px"
                   textAlign="center"
                 >
-                  Choose your games
+                  {stepTitles[activeStep]}
                 </Heading>
                 <Divider />
                 <Flex flex="1" overflow="auto">
