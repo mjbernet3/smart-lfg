@@ -19,6 +19,7 @@ const theme = extendTheme({
       first: "#171923",
       second: "#292B34",
     },
+    medEmphasisText: "#718096",
   },
   components: {
     Steps,

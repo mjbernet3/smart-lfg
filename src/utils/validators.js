@@ -1,3 +1,5 @@
+import { personalities } from "./constants";
+
 export const validateEmail = (email) => {
   if (!email) {
     throw new Error("Please enter an email address.");
@@ -23,5 +25,24 @@ export const validateAccountName = (accountName) => {
 export const validateGames = (games) => {
   if (Object.keys(games).length === 0) {
     throw new Error("Please choose at least one game.");
+  }
+};
+
+export const validateAge = (ageStr) => {
+  if (!ageStr) {
+    throw new Error("Please enter an age.");
+  } else if (isNaN(ageStr)) {
+    throw new Error("Age must be a number.");
+  }
+
+  const age = parseInt(ageStr);
+  if (age < 18 || age > 99) {
+    throw new Error("Must be between 18 and 99 years old to register.");
+  }
+};
+
+export const validatePersonality = (personality) => {
+  if (personality && !personalities.includes(personality)) {
+    throw new Error("Please provide a valid personality.");
   }
 };

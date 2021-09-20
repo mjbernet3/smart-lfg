@@ -30,7 +30,16 @@ function Register() {
         />
       ),
     },
-    { label: "Preferences", content: <PreferenceStep /> },
+    {
+      label: "Preferences",
+      content: (
+        <PreferenceStep
+          initialPrefs={{ ...stepInfo["preferences"] }}
+          onPrev={() => prevStep()}
+          onNext={updateStep}
+        />
+      ),
+    },
     { label: "Account", content: <AccountStep /> },
   ];
 
