@@ -17,7 +17,7 @@ const theme = extendTheme({
     primary: "#2B6CB0",
     surface: {
       first: "#171923",
-      second: "#292B34",
+      second: "#2D3848",
     },
     medEmphasisText: "#718096",
   },
