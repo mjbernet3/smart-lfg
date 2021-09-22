@@ -11,7 +11,7 @@ import AccountStep from "components/register/AccountStep";
 import GameStep from "components/register/GameStep";
 import PreferenceStep from "components/register/PreferenceStep";
 import { useAuth } from "contexts/AuthProvider";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { register } from "services/auth";
 import { showError } from "utils/notifications";
@@ -27,7 +27,7 @@ function Register() {
   const history = useHistory();
   const { saveCurrentUser } = useAuth();
 
-  const [stepInfo, setStepInfo] = useState({});
+  const stepInfo = useRef({});
   const [loading, setLoading] = useState(false);
 
   const { activeStep, prevStep, nextStep } = useSteps({
@@ -35,7 +35,7 @@ function Register() {
   });
 
   const createAccount = async () => {
-    const { games, preferences, account } = stepInfo;
+    const { games, preferences, account } = stepInfo.current;
 
     try {
       setLoading(true);
@@ -51,9 +51,7 @@ function Register() {
   };
 
   const updateStep = (key, values) => {
-    const currStepInfo = { ...stepInfo };
-    currStepInfo[key] = values;
-    setStepInfo(currStepInfo);
+    stepInfo.current[key] = values;
 
     if (activeStep === steps.length - 1) {
       createAccount();
@@ -67,7 +65,7 @@ function Register() {
       label: "Games",
       content: (
         <GameStep
-          initialGames={{ ...stepInfo["games"] }}
+          initialGames={{ ...stepInfo.current["games"] }}
           onPrev={() => prevStep()}
           onNext={updateStep}
         />
@@ -77,7 +75,7 @@ function Register() {
       label: "Preferences",
       content: (
         <PreferenceStep
-          initialPrefs={{ ...stepInfo["preferences"] }}
+          initialPrefs={{ ...stepInfo.current["preferences"] }}
           onPrev={() => prevStep()}
           onNext={updateStep}
         />
@@ -87,7 +85,7 @@ function Register() {
       label: "Account",
       content: (
         <AccountStep
-          initialAccount={{ ...stepInfo["account"] }}
+          initialAccount={{ ...stepInfo.current["account"] }}
           onPrev={() => prevStep()}
           onNext={updateStep}
         />
