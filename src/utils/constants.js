@@ -84,3 +84,8 @@ export const availableInterests = {
   volunteering: "Volunteering",
   writing: "Writing",
 };
+
+export const matchmakingTypes = {
+  casual: "Casual",
+  comp: "Competitive",
+};

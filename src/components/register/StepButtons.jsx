@@ -6,10 +6,7 @@ function StepButtons({ stepNumber, onPrev, onNext }) {
       <Button onClick={onPrev} isDisabled={stepNumber === 1}>
         Prev
       </Button>
-      <Button
-        backgroundColor={stepNumber === 3 ? "primary" : ""}
-        onClick={onNext}
-      >
+      <Button variant={stepNumber === 3 ? "primary" : "solid"} onClick={onNext}>
         {stepNumber === 3 ? "Finish" : "Next"}
       </Button>
     </HStack>

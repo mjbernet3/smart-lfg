@@ -23,6 +23,14 @@ const theme = extendTheme({
   },
   components: {
     Steps,
+    Button: {
+      variants: {
+        primary: {
+          backgroundColor: "#2B6CB0",
+          _hover: { backgroundColor: "#4299E1" },
+        },
+      },
+    },
   },
   config: {
     initialColorMode: "dark",
