@@ -5,6 +5,7 @@ const urls = {
   api: {
     register: "/register",
     login: "/login",
+    profile: "/profile",
   },
 };
 

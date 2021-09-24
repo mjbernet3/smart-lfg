@@ -1,6 +1,7 @@
 import { useAuth } from "contexts/AuthProvider";
 import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import { events } from "utils/sockets";
 
 const SocketContext = createContext();
 
@@ -13,8 +14,8 @@ function SocketProvider(props) {
   useEffect(() => {
     if (id) {
       const newSocket = io(process.env.REACT_APP_SOCKET_URI);
-      newSocket.on("connect", () => {
-        newSocket.emit("register-socket", id);
+      newSocket.on(events.connect, () => {
+        newSocket.emit(events.registerSocket, id);
       });
 
       setSocket(newSocket);
