@@ -23,3 +23,10 @@ export const login = async (email, password) => {
     },
   });
 };
+
+export const getUserProfile = async () => {
+  return internalRequest({
+    url: urls.api.profile,
+    method: "GET",
+  });
+};

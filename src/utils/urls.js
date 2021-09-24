@@ -1,6 +1,7 @@
 const urls = {
   register: "/register",
   login: "/login",
+  profile: "/profile",
   match: "/match",
   home: "/",
   api: {
