@@ -45,7 +45,15 @@ function Login() {
 
   return (
     <Flex height="100%" width="100%" padding="20px">
-      <VStack align="stretch" spacing="15px" flexBasis="450px" margin="auto">
+      <VStack
+        align="stretch"
+        spacing="15px"
+        flexBasis="550px"
+        margin="auto"
+        backgroundColor="surface.first"
+        padding="60px"
+        borderRadius="md"
+      >
         <Heading>Smart LFG</Heading>
         <Text>The best way to find other players like you.</Text>
         <VStack align="stretch">
@@ -75,7 +83,7 @@ function Login() {
             Log In
           </Button>
           <HStack justify="center">
-            <Text>Need an account?</Text>
+            <Text color="medEmphasisText">Need an account?</Text>
             <RouterLink to={urls.register}>
               <Link>Sign Up</Link>
             </RouterLink>
